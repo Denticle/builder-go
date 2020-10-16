@@ -2,7 +2,7 @@ FROM kubespheredev/builder-base:latest
 
 RUN yum -y groupinstall 'Development Tools'  && yum -y clean all --enablerepo='*'
 
-ENV GOLANG_VERSION 1.12.10
+ENV GOLANG_VERSION 1.15.2
 
 ENV PATH $PATH:/usr/local/go/bin
 ENV PATH $PATH:/usr/local/
