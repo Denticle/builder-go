@@ -9,8 +9,8 @@ pipeline {
     stage('build and tag image') {
       steps {
         container('base') {
-          sh '''docker build -t kubespheredev/builder-go .
-docker tag kubespheredev/builder-go kubespheredev/builder-go:2.1.0'''
+          sh '''docker build -t denticle/builder-go .
+docker tag denticle/builder-go denticle/builder-go'''
         }
 
       }
@@ -24,7 +24,7 @@ docker tag kubespheredev/builder-go kubespheredev/builder-go:2.1.0'''
           withCredentials([usernamePassword(passwordVariable : 'DOCKER_PASSWORD' ,usernameVariable : 'DOCKER_USERNAME' ,credentialsId : 'dockerhub-id' ,)]) {
             sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
           }
-            sh 'docker push kubespheredev/builder-go'
+            sh 'docker push denticle/builder-go'
         }
       }
     }
